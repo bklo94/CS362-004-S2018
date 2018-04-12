@@ -603,7 +603,7 @@ void feastCard(int currentPlayer, struct gameState *state, int temphand[], int c
    //Reset Hand
 }
 
-void mineCard(int currentPlayer, struct gameState *state, int handPos, int choice1, int choice2){
+int mineCard(int currentPlayer, struct gameState *state, int handPos, int choice1, int choice2){
    int i, j;
    j = state->hand[currentPlayer][choice1];  //store card we will trash
    if (state->hand[currentPlayer][choice1] < copper || state->hand[currentPlayer][choice1] > gold){
@@ -625,16 +625,18 @@ void mineCard(int currentPlayer, struct gameState *state, int handPos, int choic
          break;
       }
    }
+   return 0;
 }
 
 int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus){
-   int i, j, k, x, index;
+   int i, j, k, index, y;
    int currentPlayer = whoseTurn(state);
    int nextPlayer = currentPlayer + 1;
    int tributeRevealedCards[2] ={-1, -1};
    int temphand[MAX_HAND];// moved above the if statement
-   int drawntreasure=0;
-   int cardDrawn;
+   //int x
+   //int drawntreasure=0;
+   //int cardDrawn;
    int z = 0;// this is the counter for the temp hand
    if (nextPlayer > (state->numPlayers - 1)){
       nextPlayer = 0;
@@ -650,15 +652,15 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
          return 0;
 
       case feast:
-         feastCard(currentPlayer, *state, temphand[], choice1);
+         feastCard(currentPlayer, state, temphand, choice1);
          return 0;
 
       case gardens:
          return -1;
 
       case mine:
-          mineCard(currentPlayer, state, handPos, choice1, choice2);
-         return 0;
+         y = mineCard(currentPlayer, state, handPos, choice1, choice2);
+         return y;
 
       case remodel:
          j = state->hand[currentPlayer][choice1];  //store card we will trash
@@ -678,7 +680,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
          return 0;
 
       case smithy:
-
+         smithyCard(currentPlayer, state, handPos);
          return 0;
 
       case village:
