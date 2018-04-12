@@ -532,7 +532,8 @@ void adventurerCard(int currentPlayer, struct gameState *state, int temphand[], 
 void smithyCard(int currentPlayer, struct gameState *state, int handPos){
    int i;
    //+3 Cards
-   for (i = 0; i < 3; i++){
+   //TODO Bug fix here. Off by 1 error, where only 4 cards are given
+   for (i = 0; i <= 3; i++){
       drawCard(currentPlayer, state);
    }
    //discard card from hand
@@ -542,7 +543,8 @@ void smithyCard(int currentPlayer, struct gameState *state, int handPos){
 void councilCard(int currentPlayer, struct gameState *state, int handPos){
    int i;
    //+4 Cards
-   for (i = 0; i < 4; i++){
+   //TODO Bug off by 1 error. Adds one less card
+   for (i = 0; i < 3; i++){
       drawCard(currentPlayer, state);
    }
    //+1 Buy
@@ -568,7 +570,8 @@ void feastCard(int currentPlayer, struct gameState *state, int temphand[], int c
    //Backup hand
    //Update Coins for Buy
    updateCoins(currentPlayer, state, 5);
-   x = 1;//Condition to loop on
+   //TODO Bug wrong loop condition
+   x = 0;//Condition to loop on
    while( x == 1){//Buy one card
       if (supplyCount(choice1, state) <= 0){
          if (DEBUG)
@@ -615,7 +618,8 @@ int mineCard(int currentPlayer, struct gameState *state, int handPos, int choice
    if ( (getCost(state->hand[currentPlayer][choice1]) + 3) > getCost(choice2) ){
       return -1;
    }
-   gainCard(choice2, state, 2, currentPlayer);
+   //TODO Bug adds to deck instead of hand
+   gainCard(choice2, state, 1, currentPlayer);
    //discard card from hand
    discardCard(handPos, currentPlayer, state, 0);
    //discard trashed card
