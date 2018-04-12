@@ -532,7 +532,7 @@ void adventurerCard(int currentPlayer, struct gameState *state, int temphand[], 
 void smithyCard(int currentPlayer, struct gameState *state, int handPos){
    int i;
    //+3 Cards
-   //TODO Bug fix here. Off by 1 error, where only 4 cards are given
+   //TODO Bug fix here. Off by 1 error, where 4 cards are given instead of 3
    for (i = 0; i <= 3; i++){
       drawCard(currentPlayer, state);
    }
@@ -540,7 +540,7 @@ void smithyCard(int currentPlayer, struct gameState *state, int handPos){
    discardCard(handPos, currentPlayer, state, 0);
 }
 
-void councilCard(int currentPlayer, struct gameState *state, int handPos){
+void councilRoomCard(int currentPlayer, struct gameState *state, int handPos){
    int i;
    //+4 Cards
    //TODO Bug off by 1 error. Adds one less card
@@ -652,7 +652,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
          return 0;
 
       case council_room:
-         councilCard(currentPlayer, state, handPos);
+         councilRoomCard(currentPlayer, state, handPos);
          return 0;
 
       case feast:
