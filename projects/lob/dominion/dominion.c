@@ -509,7 +509,8 @@ int getCost(int cardNumber){
 void adventurerCard(int currentPlayer, struct gameState *state, int temphand[], int z){
    int drawntreasure=0;
    int cardDrawn;
-   while(drawntreasure<2){
+   //TODO Bug that only draws one treasure instead of two
+   while(drawntreasure<1){
       if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
          shuffle(currentPlayer, state);
       }
@@ -618,8 +619,7 @@ int mineCard(int currentPlayer, struct gameState *state, int handPos, int choice
    if ( (getCost(state->hand[currentPlayer][choice1]) + 3) > getCost(choice2) ){
       return -1;
    }
-   //TODO Bug adds to deck instead of hand
-   gainCard(choice2, state, 1, currentPlayer);
+   gainCard(choice1, state, 1, currentPlayer);
    //discard card from hand
    discardCard(handPos, currentPlayer, state, 0);
    //discard trashed card
