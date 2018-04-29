@@ -5,10 +5,10 @@
 #include <assert.h>
 #include "rngs.h"
 
-//FEAST TESTS
+//COUNCIL ROOM TESTS
 
-// global count of test failures
-int failureCount = 0;
+// global variable to count the number of failed tests
+int countFail = 0;
 
 // function to check if two ints are equal or not
 void compareStates(int a, int b) {
@@ -16,7 +16,7 @@ void compareStates(int a, int b) {
         printf("Test: PASSED\n");
     else {
         printf("Test: FAILED\n");
-        failureCount++;
+        countFail++;
     }
 }
 
@@ -35,40 +35,40 @@ int main () {
     //initialize the game state and assign memory to the state
     initializeGame(numPlayers, k, seed, &state);
     memcpy(&stateOriginal, &state, sizeof(struct gameState));
-    //call the feast card function
-    cardEffect(feast, choice1, choice2, choice3, &state, handpos, &bonus);
+    //call the council_room card function
+    cardEffect(council_room, choice1, choice2, choice3, &state, handpos, &bonus);
     printf("Check Player 0 Gains 4 Cards: ");
     compareStates(state.handCount[p0],stateOriginal.handCount[p0]+4);
-    //printf("%i\n", handCard(handpos,&state) != adventurer);
+    //check the card effects correctly on the player
     printf("Check Player 0 Pile if 4 Cards Taken: ");
     compareStates(state.deckCount[p0],stateOriginal.deckCount[p0]-4);
     printf("Check Player 0 if Buy Inceases By 1: ");
     compareStates(state.numBuys,stateOriginal.numBuys+1);
 
+    // check if the victory pile is unchanged
     printf("Check Victory Supply Piles: ");
     compareStates(state.supplyCount[province],stateOriginal.supplyCount[province]);
     compareStates(state.supplyCount[duchy],stateOriginal.supplyCount[duchy]);
     compareStates(state.supplyCount[estate],stateOriginal.supplyCount[estate]);
 
+    //for loop to check if the inital kingdom cards are the same.
     printf("Check if Kingdom Supply Piles Remains Same:\n");
     for (i = 0; i < 10; i++) {
         printf("Checking Card %i: ", i);
         compareStates(state.supplyCount[k[i]],stateOriginal.supplyCount[k[i]]);
     }
 
-
+    //check if the second player had been affected from the council_room card
     printf("Check Player 1 Gains 1 Card: ");
     compareStates(state.handCount[p1],stateOriginal.handCount[p1]+1);
     printf("Check Player 1 Pile if 1 Card Taken: ");
     compareStates(state.deckCount[p1],stateOriginal.deckCount[p1]-1);
 
-    if (failureCount != 0) {
+    if (countFail != 0) {
         printf("CARD TEST FAILED\n");
-        printf("NUMBER OF TESTS FAILED: %i\n",failureCount);
+        printf("NUMBER OF TESTS FAILED: %i\n",countFail);
     }
-    else {
+    else
         printf("ALL CARD TESTS SUCCESSFUL\n");
-    }
-
     return 0;
 }
