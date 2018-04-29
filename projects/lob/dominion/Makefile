@@ -84,9 +84,9 @@ runcards: cardtest1.c cardtest2.c cardtest3.c cardtest4.c dominion.c rngs.c
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-runAss3: rununits runcards
+unittestresults.out: rununits runcards
 
-all: playdom player testDrawCard testBuyCard badTestDrawCard testAll runtests rununits runcards
+all: playdom player testDrawCard testBuyCard badTestDrawCard testAll runtests unittestresults.out
 
 clean:
 	rm -f *.o playdom.exe playdom player player.exe *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 unittestresults.out
