@@ -6626,7 +6626,7 @@ Creating 'dominion.c.gcov'
         -: 1073:
         -: 1074://end of dominion.c
 cardtest3.c:
-Testing -> feastCard()
+Testing -> council_room()
 
 Check Player 0 Gains 4 Cards: Test: FAILED
 Check Player 0 Pile if 4 Cards Taken: Test: FAILED

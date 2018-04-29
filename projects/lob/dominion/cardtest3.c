@@ -29,7 +29,7 @@ int main () {
 
     //start testing the feastcard()
     //assign the initial starting state and the state that will change
-    printf("Testing -> feastCard()\n\n");
+    printf("Testing -> council_room()\n\n");
     memset(&state,23,sizeof(struct gameState));
     memset(&stateOriginal,23,sizeof(struct gameState));
     //initialize the game state and assign memory to the state
