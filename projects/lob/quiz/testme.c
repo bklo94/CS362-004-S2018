@@ -5,14 +5,21 @@
 
 char inputChar()
 {
-    // TODO: rewrite this function
-    return ' ';
+    char arr[9] = {'[','(','{',' ','a','x','}',')',']'};
+
+    return arr[rand() % sizeof(arr)];
 }
 
 char *inputString()
 {
-    // TODO: rewrite this function
-    return "";
+    size_t i;
+    char arr[5] = {'r','e','s','e','t'};
+    char *temp = malloc(sizeof(char)*strlen(arr)+1);
+    for (i = 0; i < sizeof(arr); i++)
+      temp[i] = arr[rand() % sizeof(arr)];
+    temp[i] = '\0';
+
+    return temp;
 }
 
 void testme()
@@ -49,7 +56,7 @@ void testme()
 }
 
 
-int main(int argc, char *argv[])
+int main()
 {
     srand(time(NULL));
     testme();
