@@ -99,8 +99,8 @@ int main (){
                 for (i = 0; i < numTreasures; i++)
                         randGame.deck[player][i] = treasures[rand() % 3];
                 //set the discard count to 0
-                randGame.handCount[player] = floor(Random() * ((MAX_HAND - min) + 1) + min);
                 randGame.discardCount[player] = 0;
+                randGame.handCount[player] = floor(Random() * ((MAX_HAND - min) + 1) + min);
                 //set the player turn
                 randGame.whoseTurn = player;
                 //after running the interation, check the card
