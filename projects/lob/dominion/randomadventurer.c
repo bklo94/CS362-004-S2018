@@ -19,7 +19,7 @@ void checkAdventurerCard(int players, struct gameState *endState){
         //copy the passed in game state to initialState
         //call the card effect function with the adventurerCard
         memcpy(&initialState,endState,sizeof(struct gameState));
-        r = cardEffect(adventurer, 0, 0, 0, endState, 0, &bonus);
+        r = cardEffect(adventurer, 0, 0, 0, endState, 1, &bonus);
         //check if adventure card failed
         if(r)
                 failedEffects++;
