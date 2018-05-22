@@ -199,7 +199,7 @@ int playCard(int handPos, int choice1, int choice2, int choice3, struct gameStat
    //update coins (Treasure cards may be added with card draws)
    updateCoins(state->whoseTurn, state, coin_bonus);
    return 0;
-}
+}handPos
 
 int buyCard(int supplyPos, struct gameState *state){
    int who;
@@ -517,7 +517,7 @@ void adventurerCard(int currentPlayer, struct gameState *state, int temphand[], 
       drawCard(currentPlayer, state);
       cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
       if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-      drawntreasure++;
+         drawntreasure++;
       else{
          temphand[z]=cardDrawn;
          state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).
@@ -530,16 +530,21 @@ void adventurerCard(int currentPlayer, struct gameState *state, int temphand[], 
    }
 }
 
-void smithyCard(int currentPlayer, struct gameState *state, int handPos){
-   int i;
-   //+3 Cards
-   //TODO Bug fix here. Off by 1 error, where 4 cards are given instead of 3
-   for (i = 0; i <= 3; i++){
-      drawCard(currentPlayer, state);
-   }
-   //discard card from hand
-   discardCard(handPos, currentPlayer, state, 0);
+// Refactored smithy
+void rSmithy(struct gameState *state, int handPos, int currentPlayer)
+{
+      int i; // needed for the refactored independent function
+      //+3 Cards
+      //for (i = 0; i < 3; i++)
+      for (i = 0; i < 2; i++) // <- BUG
+	{
+	  drawCard(currentPlayer, state);
+	}
+
+      //discard card from hand
+      discardCard(handPos, currentPlayer, state, 0);
 }
+
 
 void councilRoomCard(int currentPlayer, struct gameState *state, int handPos){
    int i;
@@ -684,7 +689,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
          return 0;
 
       case smithy:
-         smithyCard(currentPlayer, state, handPos);
+         rSmithy(state, handPos, currentPlayer);
          return 0;
 
       case village:
