@@ -113,9 +113,9 @@ randomtests: randomadventurer randomtestcard1 randomtestcard2
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
 
-unittestresults.out: rununits runcards
+unittestresults.out: rununits runcards randomtests
 
-all: playdom player testDrawCard testBuyCard badTestDrawCard testAll runtests unittestresults.out
+all: playdom player testDrawCard testBuyCard badTestDrawCard runtests unittestresults.out
 
 clean:
 	rm -f *.o randomtestcard1 randomtestcard2 randomadventurer badTestDrawCard playdom.exe playdom player player.exe *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4
