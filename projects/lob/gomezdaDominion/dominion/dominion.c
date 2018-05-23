@@ -655,7 +655,7 @@ void rAdventurer(struct gameState *state, int drawntreasure, int z, int temphand
                 drawCard(currentPlayer, state);
                 cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
                 //if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-                if (cardDrawn == copper || (cardDrawn == silver && cardDrawn == gold)) // <--BUG
+                if (cardDrawn == copper || (cardDrawn == silver || cardDrawn == gold)) // <--BUG
                         (drawntreasure)++;
                 else{
                         temphand[z]=cardDrawn;
