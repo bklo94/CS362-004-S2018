@@ -140,7 +140,7 @@ public class UrlValidator implements Serializable {
     private static final String IPV6_REGEX = "[0-9a-fA-F:]+"; // do this as separate match because : could cause ambiguity with port prefix
 
     // userinfo    = *( unreserved / pct-encoded / sub-delims / ":" )
-    // unreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~"
+    // unreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~"S
     // sub-delims    = "!" / "$" / "&" / "'" / "(" / ")" / "*" / "+" / "," / ";" / "="
     // We assume that password has the same valid chars as user info
     private static final String USERINFO_CHARS_REGEX = "[a-zA-Z0-9%-._~!$&'()*+,;=]";

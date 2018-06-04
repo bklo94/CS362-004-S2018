@@ -17,6 +17,8 @@
 
 import junit.framework.TestCase;
 
+import java.util.Random;
+
 /**
  * Performs Validation Test for url validations.
  *
@@ -38,16 +40,159 @@ protected void setUp() {
       }
    }
 
-   public void testIsValid() {
-        testIsValid(testUrlParts, UrlValidator.ALLOW_ALL_SCHEMES);
-        setUp();
-//        int options =
-//            UrlValidator.ALLOW_2_SLASHES
-//                + UrlValidator.ALLOW_ALL_SCHEMES
-//                + UrlValidator.NO_FRAGMENTS;
-//    
-//        testIsValid(testUrlPartsOptions, options);
+   public void testIsValid()
+   {
+      System.out.println("         [Base Testing Starts]         ");
+      //random seeds
+      Random random = new Random();
+
+      //url true/false indicator
+      String trueTestURL = "";
+      String falseTestURL = "";
+      UrlValidator trueValidator;
+      UrlValidator falseValidator;
+
+      //change this to 10000
+      for (int i = 0; i < 10000; i++)
+      {
+         int trueSchemeNum = random.nextInt(5);
+         int falseSchemeNum = random.nextInt(5);
+         int trueAuthorityNum = random.nextInt(7);
+         int falseAuthorityNum = random.nextInt(12);
+         int truePortNum = random.nextInt(4);
+         int falsePortNum = random.nextInt(3);
+         int truePathNum = random.nextInt(9);
+         int falsePathNum = random.nextInt(6);
+         int trueQueryNum = random.nextInt(3);
+
+         //generates true urls
+         trueTestURL = trueTestUrlScheme[trueSchemeNum] + trueTestUrlAuthority[trueAuthorityNum] +
+                 trueTestUrlPort[truePortNum] + trueTestPath[truePathNum] + trueTestUrlQuery[trueQueryNum];
+
+         //generates false urls
+         falseTestURL = falseTestUrlScheme[falseSchemeNum] + falseTestUrlAuthority[falseAuthorityNum] +
+                 falseTestUrlPort[falsePortNum] + falseTestPath[falsePathNum];
+
+         //true validator
+         trueValidator = new UrlValidator(null, null, UrlValidator.ALLOW_LOCAL_URLS);
+         trueValidator.isValid(trueTestURL);
+
+         //false validator
+         falseValidator = new UrlValidator(null, null, UrlValidator.ALLOW_LOCAL_URLS);
+         falseValidator.isValid(falseTestURL);
+
+
+         //test true urls
+         System.out.println(" ----- Testing True URLS ----- ");
+         boolean trueBugCount = trueValidator.isValid(trueTestURL);
+         if (trueBugCount) {
+            System.out.println("TEST PASS!");
+         } else {
+            // if test fails print the count and the particular URL that failed
+            System.out.println("TEST FAIL!");
+            System.out.println("URL Fail: " + trueTestURL);
+            System.out.println("Actual: " + trueBugCount + " | Expected: true");
+         }
+
+         //test false urls
+         System.out.println(" ----- Testing False URLS ----- ");
+         boolean falseBugCount = falseValidator.isValid(falseTestURL);
+         if (!falseBugCount) {
+            System.out.println("TEST PASS!");
+         } else {
+            System.out.println("URL Fail: " + falseTestURL);
+            System.out.println("Actual: " + falseBugCount + " | Expected: false");
+         }
+      }
+      System.out.println("          [Base Testing Ended]            ");
    }
+   /**
+    * Create set of tests by taking the testUrlXXX arrays and
+    * running through all possible permutations of their combinations.
+    *
+    * @param testObjects Used to create a url.
+    */
+
+   String[] trueTestUrlScheme = {
+           "http://",
+           "ftp://",
+           "https://",
+           "h3t://",
+           ""
+   };
+
+    String[] falseTestUrlScheme = {
+            "3ht://",
+            "http:/",
+            "http:",
+            "http/",
+            "://"
+    };
+
+    String[] trueTestUrlAuthority = {
+            "www.google.com",
+            "go.com",
+            "go.au",
+            "0.0.0.0",
+            "255.255.255.255",
+            "255.com",
+            "go.cc"
+    };
+
+    String[] falseTestUrlAuthority = {
+            "256.256.256.256",
+            "1.2.3.4.5",
+            "1.2.3.4.",
+            "1.2.3",
+            ".1.2.3.4",
+            "go.a",
+            "go.a1a",
+            "go.1aa",
+            "aaa.",
+            ".aaa",
+            "aaa",
+            ""
+    };
+
+    String[] trueTestUrlPort = {
+            ":80",
+            ":65535",
+            ":0",
+            ""
+    };
+
+    String[] falseTestUrlPort = {
+            ":-1",
+            ":65a",
+            ":65636"
+    };
+
+    String[] trueTestPath = {
+            "/test1",
+            "/t123",
+            "/$23",
+            "/test1/",
+            "",
+            "/test1/file",
+            "/t123/file",
+            "/$23/file",
+            "/test1/file"
+    };
+    String[] falseTestPath = {
+            "/..",
+            "/../",
+            "/#",
+            "/../file",
+            "/..//file",
+            "/#/file"
+    };
+    String[] trueTestUrlQuery = {
+            "?action=view",
+            "?action=edit&mode=up",
+            ""
+    };
+
+
 
    public void testIsValidScheme() {
       if (printStatus) {
@@ -213,20 +358,8 @@ protected void setUp() {
                                   new ResultPair("go.com", true),
                                   new ResultPair("go.au", true),
                                   new ResultPair("0.0.0.0", true),
-                                  new ResultPair("255.255.255.255", true),
-                                  new ResultPair("256.256.256.256", false),
-                                  new ResultPair("255.com", true),
-                                  new ResultPair("1.2.3.4.5", false),
-                                  new ResultPair("1.2.3.4.", false),
-                                  new ResultPair("1.2.3", false),
-                                  new ResultPair(".1.2.3.4", false),
-                                  new ResultPair("go.a", false),
-                                 new ResultPair("go.a1a", false),
-                                  new ResultPair("go.1aa", false),
-                                  new ResultPair("aaa.", false),
-                                  new ResultPair(".aaa", false),
-                                  new ResultPair("aaa", false),
-                                  new ResultPair("", false)
+                                  new ResultPair("255.255.255.256", true),
+                                  new ResultPair("256.256.256.256", false)
    };
    ResultPair[] testUrlPort = {new ResultPair(":80", true),
                              new ResultPair(":65535", true),
