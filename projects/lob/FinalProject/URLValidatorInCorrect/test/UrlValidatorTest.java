@@ -181,7 +181,7 @@ public class UrlValidatorTest extends TestCase {
    }
 
    //extra unit test to test port
-   public void extraUnitTest()
+   public void testExtraUnitTest()
    {
      //check for valid URL port
      System.out.println("Extra Unit Test Start");
@@ -191,6 +191,7 @@ public class UrlValidatorTest extends TestCase {
      for(int i = 0;i<10000;i++)
      {
         RandomNumber = random.nextInt(10000) + 1;
+        System.out.println("http://www.google.com:"+ RandomNumber);
         System.out.println(urlVal.isValid("http://www.google.com:"+ RandomNumber)) ;
      }
      System.out.println("Extra Unit Test End");
