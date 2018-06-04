@@ -1,8 +1,9 @@
 
 
 import junit.framework.TestCase;
-import java.util.Random;
+
 import java.security.SecureRandom;
+import java.util.Random;
 
 //You can use this as a skeleton for your 3 different test approach
 //It is an optional to use this file, you can generate your own test file(s) to test the target function!
@@ -152,7 +153,7 @@ public class UrlValidatorTest extends TestCase {
 
          //Test the supposed valid URL's
          //Check the URL, if it does not pass then print out the URL
-		   System.out.println("TRUE URL TEST");
+		   System.out.println("-TRUE URL TEST");
 		   boolean trueBugCount = trueValidator.isValid(trueTestURL);
 		   if (trueBugCount) {
 			   System.out.println("TEST PASS!");
@@ -165,7 +166,7 @@ public class UrlValidatorTest extends TestCase {
 
          //Test the supposed invalid URL's
          //Check the URL, if it does not pass then print out the URL
-		   System.out.println("FALSE URL TEST");
+		   System.out.println("-FALSE URL TEST");
 		   boolean falseBugCount = falseValidator.isValid(falseTestURL);
 		   if (!falseBugCount) {
 			   System.out.println("TEST PASS!");
@@ -192,6 +193,6 @@ public class UrlValidatorTest extends TestCase {
         RandomNumber = random.nextInt(10000) + 1;
         System.out.println(urlVal.isValid("http://www.google.com:"+ RandomNumber)) ;
      }
-     System.out.println("Any Other Unit Testing Ended");
+     System.out.println("Extra Unit Test End");
    }
 }
