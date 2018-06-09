@@ -15,11 +15,8 @@
       <file leaf-file-name="UrlValidatorTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/UrlValidatorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="193" column="8" selection-start-line="193" selection-start-column="8" selection-end-line="193" selection-end-column="8" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="30">
+              <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -132,7 +129,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UrlValidatorTest.testExtraUnitTest">
+  <component name="RunManager" selected="JUnit.UrlValidatorTest.testIsValid_DefaultConstructor_InvalidScheme">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -170,30 +167,13 @@
       <dir value="$PROJECT_DIR$/../../../../FinalProject/URLValidatorInCorrect/src" />
       <patterns />
     </configuration>
-    <configuration name="UrlValidatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UrlValidatorTest.testIsValid_Constructor_UppercaseValidScheme" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="URLValidatorInCorrect" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="UrlValidatorTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="UrlValidatorTest.testExtraUnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="URLValidatorInCorrect" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UrlValidatorTest" />
-      <option name="METHOD_NAME" value="testExtraUnitTest" />
+      <option name="METHOD_NAME" value="testIsValid_Constructor_UppercaseValidScheme" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -204,47 +184,64 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="UrlValidatorTest.testIsValid" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="URLValidatorInCorrect" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="10" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UrlValidatorTest" />
-      <option name="METHOD_NAME" value="testIsValid" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="UrlValidatorTest.testYourFirstPartition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="URLValidatorInCorrect" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UrlValidatorTest" />
-      <option name="METHOD_NAME" value="testYourFirstPartition" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="UrlValidatorTest.testextraUnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UrlValidatorTest.testIsValid_DefaultConstructor_InvalidScheme" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="URLValidatorInCorrect" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="UrlValidatorTest" />
-      <option name="METHOD_NAME" value="testextraUnitTest" />
+      <option name="METHOD_NAME" value="testIsValid_DefaultConstructor_InvalidScheme" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="UrlValidatorTest.testIsValid_DefaultConstructor_LowercaseValidScheme" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="URLValidatorInCorrect" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UrlValidatorTest" />
+      <option name="METHOD_NAME" value="testIsValid_DefaultConstructor_LowercaseValidScheme" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="UrlValidatorTest.testIsValid_DefaultConstructor_UppercaseValidScheme" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="URLValidatorInCorrect" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UrlValidatorTest" />
+      <option name="METHOD_NAME" value="testIsValid_DefaultConstructor_UppercaseValidScheme" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="UrlValidatorTest.testIsValid_DefaultConstructor_ValidScheme_NoAuthority" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="URLValidatorInCorrect" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="UrlValidatorTest" />
+      <option name="METHOD_NAME" value="testIsValid_DefaultConstructor_ValidScheme_NoAuthority" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -298,19 +295,19 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.Unnamed" />
-      <item itemvalue="JUnit.UrlValidatorTest.testYourFirstPartition" />
-      <item itemvalue="JUnit.UrlValidatorTest.testIsValid" />
-      <item itemvalue="JUnit.UrlValidatorTest" />
-      <item itemvalue="JUnit.UrlValidatorTest.testextraUnitTest" />
-      <item itemvalue="JUnit.UrlValidatorTest.testExtraUnitTest" />
+      <item itemvalue="JUnit.UrlValidatorTest.testIsValid_DefaultConstructor_LowercaseValidScheme" />
+      <item itemvalue="JUnit.UrlValidatorTest.testIsValid_DefaultConstructor_UppercaseValidScheme" />
+      <item itemvalue="JUnit.UrlValidatorTest.testIsValid_Constructor_UppercaseValidScheme" />
+      <item itemvalue="JUnit.UrlValidatorTest.testIsValid_DefaultConstructor_InvalidScheme" />
+      <item itemvalue="JUnit.UrlValidatorTest.testIsValid_DefaultConstructor_ValidScheme_NoAuthority" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UrlValidatorTest.testExtraUnitTest" />
-        <item itemvalue="JUnit.UrlValidatorTest.testextraUnitTest" />
-        <item itemvalue="JUnit.UrlValidatorTest" />
-        <item itemvalue="JUnit.UrlValidatorTest.testYourFirstPartition" />
-        <item itemvalue="JUnit.UrlValidatorTest.testIsValid" />
+        <item itemvalue="JUnit.UrlValidatorTest.testIsValid_DefaultConstructor_InvalidScheme" />
+        <item itemvalue="JUnit.UrlValidatorTest.testIsValid_DefaultConstructor_ValidScheme_NoAuthority" />
+        <item itemvalue="JUnit.UrlValidatorTest.testIsValid_Constructor_UppercaseValidScheme" />
+        <item itemvalue="JUnit.UrlValidatorTest.testIsValid_DefaultConstructor_UppercaseValidScheme" />
+        <item itemvalue="JUnit.UrlValidatorTest.testIsValid_DefaultConstructor_LowercaseValidScheme" />
       </list>
     </recent_temporary>
   </component>
@@ -324,7 +321,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1528105859489</updated>
-      <workItem from="1528105864783" duration="1387000" />
+      <workItem from="1528105864783" duration="2045000" />
     </task>
     <servers />
   </component>
@@ -341,9 +338,15 @@
     <history-entry file="UrlValidatorTest_testextraUnitTest - 2018.06.04 at 03h 12m 38s.xml">
       <configuration name="UrlValidatorTest.testextraUnitTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="UrlValidatorTest_testextraUnitTest - 2018.06.04 at 03h 14m 16s.xml">
+      <configuration name="UrlValidatorTest.testextraUnitTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UrlValidatorTest_testExtraUnitTest - 2018.06.04 at 03h 14m 19s.xml">
+      <configuration name="UrlValidatorTest.testExtraUnitTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1387000" />
+    <option name="totallyTimeSpent" value="2045000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
@@ -403,11 +406,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/UrlValidatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="193" column="8" selection-start-line="193" selection-start-column="8" selection-end-line="193" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="30">
+          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
         </state>
       </provider>
     </entry>

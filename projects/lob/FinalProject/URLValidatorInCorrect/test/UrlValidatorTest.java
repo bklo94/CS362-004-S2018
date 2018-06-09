@@ -1,7 +1,6 @@
 
 
 import junit.framework.TestCase;
-
 import java.security.SecureRandom;
 import java.util.Random;
 
@@ -98,19 +97,100 @@ public class UrlValidatorTest extends TestCase {
       super(testName);
    }
 
-
+   public void printManualTest(UrlValidator urlVal, String testUrl, String expected) {
+	   if(urlVal.isValid(testUrl)) {
+		   System.out.println("\"" + testUrl + "\" is Valid. Expected: " + expected);
+	   }
+	   else {
+		   System.out.println("\"" + testUrl + "\" is Invalid. Expected: " + expected);
+	   }
+   }
 
    public void testManualTest()
    {
-//You can use this function to implement your manual testing
+	   //You can use this function to implement your manual testing
+	   UrlValidator urlVal = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
 
+	   System.out.println("BEGIN MANUAL TESTING");
+	   printManualTest(urlVal, "http://www.google.com","Valid");
+	   printManualTest(urlVal, "http:www.google.com","Invalid");
+	   printManualTest(urlVal, "http://www.google.com/","Valid");
+	   //printManualTest(urlVal, "https://www.google.com", "Valid"); //https can potentially crash the program.
+	   printManualTest(urlVal, "http://google.com","Valid");
+	   printManualTest(urlVal, "http://google.com/","Valid");
+	   printManualTest(urlVal, "http://www.google.com/test","Valid");
+	   printManualTest(urlVal, "http://www.google.com/../test","Invalid");
+
+	   printManualTest(urlVal, "http://www.google.com:8080","Valid");
+	   printManualTest(urlVal, "http://www.google.com:80/test","Valid");
+	   printManualTest(urlVal, "http://www.google.com:8000000/test","Invalid");
+
+	   printManualTest(urlVal, "http://www.google.com/search?rlz=1C1EJFA_enUS720US720&ei=zZAYW-viH6uL0wKPiZsI&btnG=Search&q=test","Valid"); //url from searching for "test" in google
+
+	   printManualTest(urlVal, "http://testurl.edu","Valid");
+	   printManualTest(urlVal, "http://testurl.gov","Valid");
+
+	   printManualTest(urlVal, "http://.com","Invalid");
+
+	   printManualTest(urlVal, "http://www.google.com/test?test=1","Valid");
+	   printManualTest(urlVal, "http://www.google.com?test=1&mode=up","Valid");
+
+	   printManualTest(urlVal, "http://127.0.0.1", "Valid");
+	   printManualTest(urlVal, "http://127.0.0.1:80", "Valid");
+	   printManualTest(urlVal, "http://127.0.0.1:80/test.html", "Valid");
+	   printManualTest(urlVal, "http://127.0.0.1:80/test", "Valid");
+	   printManualTest(urlVal, "http://127.255.0.1", "Valid");
+	   printManualTest(urlVal, "http://255.255.255.255", "Valid");
+
+	   printManualTest(urlVal, "http://5000.5000.5000.5000","Invalid");
+
+	   //.getInstance() is bugged.
+	   //InetAddressValidator inet = InetAddressValidator.getInstance();
+	   //if(inet.isValid("5000.5000.5000.5000")) { //fail due to inet being null.
+	   //   System.out.println("5000.5000.5000.5000 returned Valid");
+	   //}
+	   //else {
+	   //   System.out.println("5000.5000.5000.5000 returned Invalid");
+	   //}
+
+	   System.out.println("END MANUAL TESTING");
    }
 
 
-   public void testYourFirstPartition()
+   // test a URL in lowercase that has an allowed scheme and authority
+   public void testIsValid_DefaultConstructor_LowercaseValidScheme()
    {
-	 //You can use this function to implement your First Partition testing
+    UrlValidator urlVal = new UrlValidator();
+    assert urlVal.isValid("http://www.sciencealert.com") == true : "valid lowercase scheme is not passing isValid";
+   }
 
+   // test a URL in uppercase that has an allowed scheme and authority
+   public void testIsValid_DefaultConstructor_UppercaseValidScheme()
+   {
+    UrlValidator urlVal = new UrlValidator(); // default constructor requires lowerCase http, https, ftp
+    assert urlVal.isValid("HTTP://WWW.SCIENCEALERT.COM") == true : "valid uppercase scheme is not passing isValid";
+   }
+
+   // test a URL in uppercase that uses a UrlValidator constructor that allows upperCase scheme and authority
+   public void testIsValid_Constructor_UppercaseValidScheme()
+   {
+    String[] schemes = {"http", "HTTP"};
+    UrlValidator urlVal = new UrlValidator(schemes); // constructor allows http and HTTP schemes
+    assert urlVal.isValid("HTTP://www.sciencealert.com") == true : "constructor allows uppercase 'HTTP' scheme, but uppercase is not passing isValid";
+   }
+
+   // test a URL that has an invalid scheme and an allowed authority
+   public void testIsValid_DefaultConstructor_InvalidScheme()
+   {
+    UrlValidator urlVal = new UrlValidator();
+    assert urlVal.isValid("jtp://www.sciencealert.com") == false : "UrlValidator default constructor and 'jtp' scheme is passing isValid";
+   }
+
+   // test a URL that has an allowed scheme but no authority
+   public void testIsValid_DefaultConstructor_ValidScheme_NoAuthority()
+   {
+    UrlValidator urlVal = new UrlValidator();
+    assert urlVal.isValid("http://") == false : "UrlValidator default constructor, valid scheme, and no authority is passing isValid";
    }
 
    public void testIsValid()
